@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <rect width="600" height="800" rx="36" fill="#9333ea"/>
+  <rect x="60" y="60" width="480" height="680" rx="28" fill="#fdf2f8"/>
+  <circle cx="230" cy="300" r="70" fill="#fb7185"/>
+  <circle cx="370" cy="300" r="70" fill="#38bdf8"/>
+  <path d="M220 470c40-60 120-60 160 0" stroke="#9333ea" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <text x="300" y="650" text-anchor="middle" font-family="Segoe UI, Arial" font-size="34" fill="#9333ea">Garden of Signals</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <rect width="600" height="800" rx="36" fill="#1d4ed8"/>
+  <rect x="60" y="60" width="480" height="680" rx="28" fill="#ecfeff"/>
+  <path d="M210 220h180" stroke="#f97316" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="300" cy="360" r="80" fill="#22c55e"/>
+  <path d="M240 360h120" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
+  <path d="M300 280v160" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
+  <text x="300" y="650" text-anchor="middle" font-family="Segoe UI, Arial" font-size="34" fill="#1d4ed8">The Quiet Engine</text>
+</svg>
