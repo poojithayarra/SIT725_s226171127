@@ -3,79 +3,60 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A colourful Deakin Library book showcase with interactive details.">
-    <title>Deakin Library</title>
+    <meta name="description" content="A welcoming Deakin Community Service directory with support options and details.">
+    <title>Deakin Community Service</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="page-shell">
         <header class="hero">
             <div>
-                <p class="eyebrow">Bright ideas • Cozy reading</p>
-                <h1>Deakin Library</h1>
-                <p class="hero-copy">Explore a cheerful selection of books that bring curiosity, imagination, and calm into every study session.</p>
+                <p class="eyebrow">Support • Connection • Care</p>
+                <h1>Deakin Community Service</h1>
+                <p class="hero-copy">Explore local support services that help people find care, guidance, and practical assistance in their community.</p>
             </div>
-            <div class="hero-badge">6 featured reads</div>
+            <div class="hero-badge">Community directory</div>
         </header>
 
-        <section class="books-grid" aria-label="Featured books">
-            <article class="book-card" tabindex="0" data-title="Moonlit Maps" data-author="Aria Lane" data-image="images/book1.svg" data-description="A glowing journey across hidden islands where a young cartographer discovers courage and wonder.">
-                <img src="images/book1.svg" alt="Moonlit Maps book cover">
-                <div class="book-info">
-                    <h3>Moonlit Maps</h3>
-                    <p>Aria Lane</p>
+        <section class="form-panel" aria-label="Add a service">
+            <h2>Add a Community Service</h2>
+            <form id="serviceForm" class="service-form">
+                <div class="form-row">
+                    <label for="serviceName">Service Name</label>
+                    <input id="serviceName" name="serviceName" required minlength="3" />
                 </div>
-            </article>
-
-            <article class="book-card" tabindex="0" data-title="The Colour of Rain" data-author="Mina Sol" data-image="images/book2.svg" data-description="A tender story about remembering joy through storms, seasons, and the small healing moments in life.">
-                <img src="images/book2.svg" alt="The Colour of Rain book cover">
-                <div class="book-info">
-                    <h3>The Colour of Rain</h3>
-                    <p>Mina Sol</p>
+                <div class="form-row">
+                    <label for="category">Category</label>
+                    <input id="category" name="category" required />
                 </div>
-            </article>
-
-            <article class="book-card" tabindex="0" data-title="Studio of Stars" data-author="Jules Hart" data-image="images/book3.svg" data-description="An inspiring tale of an artist who turns a quiet city rooftop into a place of shared creativity.">
-                <img src="images/book3.svg" alt="Studio of Stars book cover">
-                <div class="book-info">
-                    <h3>Studio of Stars</h3>
-                    <p>Jules Hart</p>
+                <div class="form-row">
+                    <label for="location">Location</label>
+                    <input id="location" name="location" required />
                 </div>
-            </article>
-
-            <article class="book-card" tabindex="0" data-title="Echoes of the Bay" data-author="Nico Reed" data-image="images/book4.svg" data-description="A reflective coastal novel where memories and music bring old friends back together.">
-                <img src="images/book4.svg" alt="Echoes of the Bay book cover">
-                <div class="book-info">
-                    <h3>Echoes of the Bay</h3>
-                    <p>Nico Reed</p>
+                <div class="form-row">
+                    <label for="contact">Contact</label>
+                    <input id="contact" name="contact" required />
                 </div>
-            </article>
-
-            <article class="book-card" tabindex="0" data-title="The Quiet Engine" data-author="Rae Chen" data-image="images/book5.svg" data-description="A clever science-fiction adventure about building a future with curiosity, patience, and kindness.">
-                <img src="images/book5.svg" alt="The Quiet Engine book cover">
-                <div class="book-info">
-                    <h3>The Quiet Engine</h3>
-                    <p>Rae Chen</p>
+                <div class="form-row">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" maxlength="500" required></textarea>
                 </div>
-            </article>
-
-            <article class="book-card" tabindex="0" data-title="Garden of Signals" data-author="Luca Voss" data-image="images/book6.svg" data-description="A magical mystery in which a hidden garden reveals messages from the past to the future.">
-                <img src="images/book6.svg" alt="Garden of Signals book cover">
-                <div class="book-info">
-                    <h3>Garden of Signals</h3>
-                    <p>Luca Voss</p>
-                </div>
-            </article>
+                <button type="submit">Save Service</button>
+            </form>
+            <p id="formMessage" class="form-message" aria-live="polite"></p>
         </section>
+
+        <section class="services-grid" id="servicesContainer" aria-label="Featured services"></section>
     </div>
 
     <div class="modal" id="bookModal" aria-hidden="true">
         <div class="modal-content">
-            <button class="close-btn" id="closeModal" aria-label="Close book details">×</button>
-            <img id="modalImage" src="" alt="Book cover preview">
+            <button class="close-btn" id="closeModal" aria-label="Close service details">×</button>
+            <div class="modal-icon" id="modalIcon"></div>
             <div class="modal-body">
                 <h2 id="modalTitle"></h2>
-                <p class="modal-author" id="modalAuthor"></p>
+                <p class="modal-author" id="modalCategory"></p>
+                <p class="modal-location" id="modalLocation"></p>
                 <p id="modalDescription"></p>
             </div>
         </div>

@@ -14,10 +14,12 @@
   "author": "",
   "type": "commonjs",
   "main": "1",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "express": "^5.2.1"
+"scripts": {
+  "start": "node server.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+}
+ "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.8.1"
   }
 }
