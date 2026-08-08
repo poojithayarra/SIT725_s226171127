@@ -1,0 +1,14 @@
+{
+  "name": "books-catalog",
+  "version": "1.0.0",
+  "description": "Books Catalog MVC Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Poojitha Yarra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
