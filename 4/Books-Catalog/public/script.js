@@ -1,35 +1,53 @@
 fetch("/api/books")
-.then(response => response.json())
-.then(result => {
-    const booksDiv = document.getElementById("books");
-    const books = Array.isArray(result) ? result : (result.data || []);
+    .then(response => response.json())
+    .then(result => {
 
-    if (!books.length) {
-        booksDiv.innerHTML = "<p>No books available right now.</p>";
-        return;
-    }
+        const booksDiv = document.getElementById("books");
 
-    books.forEach(book => {
-        const card = document.createElement("div");
-        card.className = "book-card";
+        result.data.forEach(book => {
 
-        card.innerHTML = `
-            <h2>${book.title}</h2>
-            <p class="book-meta"><strong>Author:</strong> ${book.author} &nbsp;•&nbsp; <strong>Genre:</strong> ${book.genre}</p>
-            <p class="hint">Click to read the summary</p>
-            <p class="description">${book.summary}</p>
-        `;
+            const card = document.createElement("div");
 
-        card.classList.add("active");
+            card.className = "book-card";
 
-        card.addEventListener("click", () => {
-            card.classList.toggle("active");
+            let price = "Price unavailable";
+
+            if (book.price) {
+                if (typeof book.price === "object" && book.price.$numberDecimal) {
+                    price = `$${book.price.$numberDecimal}`;
+                } else {
+                    price = `$${book.price}`;
+                }
+            }
+
+            card.innerHTML = `
+                <h2>${book.title}</h2>
+
+                <p>
+                    <strong>Author:</strong> ${book.author}
+                </p>
+
+                <p>
+                    <strong>Genre:</strong> ${book.genre}
+                </p>
+
+                <p>
+                    <strong>Year:</strong> ${book.year}
+                </p>
+
+                <p>
+                    <strong>Price:</strong> ${price}
+                </p>
+
+                <p class="summary">
+                    ${book.summary}
+                </p>
+            `;
+
+            booksDiv.appendChild(card);
         });
 
-        booksDiv.appendChild(card);
+    })
+    .catch(error => {
+        console.error("Error loading books:", error);
     });
-})
-.catch(error => {
-    console.log(error);
-    document.getElementById("books").innerHTML = "<p>Unable to load books.</p>";
-});

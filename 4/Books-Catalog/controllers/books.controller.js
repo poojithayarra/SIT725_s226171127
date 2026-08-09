@@ -1,33 +1,45 @@
-const booksService = require('../services/books.service');
+const bookService = require("../services/books.service");
 
-function getBooks(req, res) {
-  res.json(booksService.getAllBooks());
-}
+const getAllBooks = async (req, res) => {
+    try {
+        const books = await bookService.getAllBooks();
 
-function addBook(req, res) {
-  const book = booksService.addBook(req.body);
-  res.status(201).json(book);
-}
+        res.json({
+            statusCode: 200,
+            data: books,
+            message: "Books retrieved successfully"
+        });
 
-function updateBook(req, res) {
-  const book = booksService.updateBook(req.params.id, req.body);
-  if (!book) {
-    return res.status(404).json({ message: 'Book not found' });
-  }
-  res.json(book);
-}
+    } catch (error) {
+        res.status(500).json({
+            message: "Error retrieving books"
+        });
+    }
+};
 
-function deleteBook(req, res) {
-  const deleted = booksService.deleteBook(req.params.id);
-  if (!deleted) {
-    return res.status(404).json({ message: 'Book not found' });
-  }
-  res.json({ message: 'Book deleted' });
-}
+const getBookById = async (req, res) => {
+    try {
+        const book = await bookService.getBookById(req.params.id);
+
+        if (!book) {
+            return res.status(404).json({
+                message: "Book not found"
+            });
+        }
+
+        res.json({
+            statusCode: 200,
+            data: book
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: "Error retrieving book"
+        });
+    }
+};
 
 module.exports = {
-  getBooks,
-  addBook,
-  updateBook,
-  deleteBook,
+    getAllBooks,
+    getBookById
 };

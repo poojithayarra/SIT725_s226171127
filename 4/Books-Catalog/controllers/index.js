@@ -1,1 +1,3 @@
-module.exports = require('./books.controller');
+module.exports = {
+    booksController: require("./books.controller")
+};
